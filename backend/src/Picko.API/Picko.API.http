@@ -1,0 +1,69 @@
+@Picko.API_HostAddress = http://localhost:5194
+
+### Health check
+GET {{Picko.API_HostAddress}}/api/health
+Accept: application/json
+
+### List restaurants
+GET {{Picko.API_HostAddress}}/api/restaurants?page=1&pageSize=20
+Accept: application/json
+
+### Get restaurant by id
+GET {{Picko.API_HostAddress}}/api/restaurants/00000000-0000-0000-0000-000000000000
+Accept: application/json
+
+### Get restaurant menu
+GET {{Picko.API_HostAddress}}/api/restaurants/00000000-0000-0000-0000-000000000000/menu
+Accept: application/json
+
+### Create restaurant
+POST {{Picko.API_HostAddress}}/api/restaurants
+Content-Type: application/json
+
+{
+  "name": "Pizza Palace",
+  "description": "Authentic Neapolitan pizza",
+  "cuisine": "Italian",
+  "street": "1 Main Street",
+  "city": "Springfield",
+  "state": "IL",
+  "zipCode": "62701",
+  "country": "USA",
+  "phoneNumber": "555-1234",
+  "imageUrl": "/images/pizza-palace.png"
+}
+
+### Add menu item
+POST {{Picko.API_HostAddress}}/api/restaurants/00000000-0000-0000-0000-000000000000/menu
+Content-Type: application/json
+
+{
+  "name": "Margherita",
+  "description": "San Marzano tomatoes, mozzarella, basil",
+  "price": 9.99,
+  "currency": "USD",
+  "category": "Pizza",
+  "isAvailable": true
+}
+
+### Update restaurant
+PUT {{Picko.API_HostAddress}}/api/restaurants/00000000-0000-0000-0000-000000000000
+Content-Type: application/json
+
+{
+  "id": "00000000-0000-0000-0000-000000000000",
+  "name": "Pizza Palace II",
+  "description": "Authentic Neapolitan pizza",
+  "cuisine": "Italian",
+  "street": "1 Main Street",
+  "city": "Springfield",
+  "state": "IL",
+  "zipCode": "62701",
+  "country": "USA",
+  "phoneNumber": "555-1234",
+  "imageUrl": "/images/pizza-palace.png"
+}
+
+### Delete restaurant
+DELETE {{Picko.API_HostAddress}}/api/restaurants/00000000-0000-0000-0000-000000000000
+Accept: application/json

@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Picko.API/Picko.API.csproj" />
+    <Project Path="src/Picko.Application/Picko.Application.csproj" />
+    <Project Path="src/Picko.Domain/Picko.Domain.csproj" />
+    <Project Path="src/Picko.Infrastructure/Picko.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Picko.IntegrationTests/Picko.IntegrationTests.csproj" />
+    <Project Path="tests/Picko.UnitTests/Picko.UnitTests.csproj" />
+  </Folder>
+</Solution>
