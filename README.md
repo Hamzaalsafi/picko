@@ -1,5 +1,3 @@
-<img width="1024" height="1024" alt="Gemini_Generated_Image_r4xv74r4xv74r4xv" src="https://github.com/user-attachments/assets/f738da0b-5f33-4776-8c91-e39437e74d2e" />
-
 
 # 🐻 Picko
 
