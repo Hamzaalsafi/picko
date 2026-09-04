@@ -1,3 +1,4 @@
+<img width="592" height="592" alt="picko" src="https://github.com/user-attachments/assets/39f5fa41-8c73-4b91-9a9b-4a4d3be4f13e" />
 # 🐻 Picko
 
 > **Don't know what to do? Let Picko decide.**
