@@ -2,7 +2,7 @@
 
 > **Don't know what to do? Let Picko decide.**
 
-PickoGo is a personalized decision and discovery platform that helps people decide **what to eat, watch, read, play, buy, or do** based on their preferences, mood, context, and previous choices.
+Picko is a personalized decision and discovery platform that helps people decide **what to eat, watch, read, play, buy, or do** based on their preferences, mood, context, and previous choices.
 
 Instead of giving users hundreds of options and making them decide again, **Picko makes the decision for them.**
 

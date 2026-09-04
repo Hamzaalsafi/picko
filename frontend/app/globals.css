@@ -1,26 +1,32 @@
 @import "tailwindcss";
 
+@theme {
+  --color-picko-primary: var(--picko-primary);
+  --color-picko-blue: var(--picko-blue);
+  --color-picko-brown: var(--picko-brown);
+  --color-picko-cream: var(--picko-cream);
+  --color-picko-bg: var(--picko-bg);
+  --color-picko-surface: var(--picko-surface);
+  --color-picko-text: var(--picko-text);
+  --color-picko-muted: var(--picko-muted);
+  --color-picko-border: var(--picko-border);
+
+  --shadow-card: var(--shadow-card);
+  --shadow-button: var(--shadow-button);
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+  --picko-primary: #ff9f1c;
+  --picko-blue: #2b7fff;
+  --picko-brown: #8b5a2b;
+  --picko-cream: #ffe5b4;
+  --picko-bg: #faf8f5;
+  --picko-surface: #ffffff;
+  --picko-text: #2c1e16;
+  --picko-muted: #6e6259;
+  --picko-border: #e6dfd5;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  /* Elevation Shadows */
+  --shadow-card: 0px 8px 20px rgba(44, 30, 22, 0.06);
+  --shadow-button: 0px 4px 12px rgba(255, 159, 28, 0.25);
 }
