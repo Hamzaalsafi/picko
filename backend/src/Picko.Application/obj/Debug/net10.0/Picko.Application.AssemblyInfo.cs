@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Picko.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a47830ca44cc5bd4afdf533fef82c543c9766726")]
 [assembly: System.Reflection.AssemblyProductAttribute("Picko.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Picko.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,82 +1,29 @@
-# Picko Frontend
+# PickoGo
+Next.js + TypeScript + Tailwind CSS + Framer Motion.
 
-Next.js (App Router) frontend for Picko — restaurant discovery and menu browsing.
-Talks to the Picko ASP.NET Core backend.
+## Run
+`npm install` then `npm run dev`. Open the port printed by Next.js.
 
-## Structure
+## Routes
+- `/`: brand landing page, scroll-driven storytelling and SVG expression gallery.
+- `/choose`: standalone decision experience, ready for further product development.
+- `/choose?category=Watch`: enter with Eat, Watch, Read, or Go out preselected.
 
-```
-app/
-  layout.tsx              # Root layout, header, footer
-  loading.tsx             # Global loading skeleton
-  error.tsx               # Root error boundary (retry)
-  page.tsx                # Home: restaurant list + search (?searchTerm=)
-  cart/page.tsx           # Cart from zustand store (client)
-  restaurants/
-    error.tsx             # Segment error boundary for restaurant routes
-    [id]/page.tsx         # Detail + menu (404 via notFound())
-    new/page.tsx          # Create form
-src/
-  lib/
-    api.ts                # Typed fetch client (ApiError + ProblemDetails)
-    types.ts              # DTOs mirroring the backend
-  stores/
-    cart.ts               # Zustand cart store (persisted to localStorage)
-  components/
-    Header.tsx            # Nav + cart badge (server)
-    CartCount.tsx         # Hydration-safe cart badge (client)
-    AddToCartButton.tsx   # Add menu item to cart (client)
-    RestaurantCard.tsx    # List item (server)
-    RestaurantSearch.tsx  # nuqs debounced ?searchTerm= input (client)
-    RestaurantForm.tsx    # RHF + Zod create form with server errors (client)
-    MenuList.tsx          # Menu grouped by category (server)
-    DeleteRestaurantButton.tsx  # Delete + redirect (client)
-```
+## Components
+- `LandingPage.tsx`: reusable landing sections and calls to action.
+- `ScrollStory.tsx`: pinned sequence controlled by scroll progress.
+- `Motion.tsx`: shared reveal, parallax, and progress components.
+- `Picko.tsx`: vector mascot and spring-based pointer interaction.
+- `ThinkingArtwork.tsx` and `ExpressionArtwork.tsx`: distinct path artwork for every expression.
+- `DecisionDemo.tsx`: local sample recommendation flow, isolated to /choose.
 
-## Getting Started
+## Assets
+`public/picko.svg` is the original mascot. Separate editable SVG files exist for thinking, excited, confused, celebrating, facepalm, and proud poses. All are real paths, not embedded images.
 
-1. Start the backend (see `backend/` + `docs/Architecture.md`), default `http://localhost:5000`.
-2. Copy env and run:
+## Validation
+`npm run lint` and `npm run build`.
 
-```bash
-cp .env.example .env.local
-npm install
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000).
-
-## Environment variables
-
-| Variable              | Used by | Purpose                                              |
-| --------------------- | ------- | ---------------------------------------------------- |
-| `NEXT_PUBLIC_API_URL` | Browser | Backend URL baked into the client bundle at build    |
-| `API_URL`             | Server  | Backend URL for Server Components (falls back to `NEXT_PUBLIC_API_URL`) |
-
-In docker compose, `API_URL=http://backend:5000` so server-side fetches
-resolve inside the container network, while browsers use `http://localhost:5000`.
-
-## Conventions
-
-- Server Components fetch via `src/lib/api.ts`; data pages are `force-dynamic`.
-- `params` / `searchParams` are async — always `await` them (`PageProps<'/...'>`).
-- Route errors are caught by `error.tsx` boundaries (root + `restaurants/` segment);
-  data is fetched before rendering so boundaries catch failures, not JSX in try/catch.
-- Forms use React Hook Form + Zod (client validation mirrors the backend
-  validators); backend field errors map onto fields via `setError`.
-- Search state lives in the URL via `nuqs` (`useQueryState`, throttled).
-- Client state (cart) lives in zustand with `persist`; components read via
-  selectors and gate on `useCartHydrated()` to avoid SSR mismatches.
-- Styling: Tailwind v4 `@theme` tokens in `app/globals.css`
-  (`bg-picko-primary`, `text-picko-text`, `shadow-card`, …).
-- Backend errors surface as `ApiError` with RFC 7807 `ProblemDetails`
-  (field errors in `err.problem.errors`).
-
-## Scripts
-
-```bash
-npm run dev    # dev server (Turbopack)
-npm run build  # production build
-npm run start  # serve production build
-npm run lint   # eslint
-```
+## Scope
+Recommendations are local sample data. No backend or account is required. Profiles and shared group rooms are product concepts. Reduced-motion preferences disable decorative animation and replace the pinned sequence with a static section.
+## Interaction details
+The shared navbar lives in the root layout and stays fixed on both routes (64px desktop, 58px mobile). The hero starts neutral and reacts to CTA hover or keyboard focus. Hero and scroll-scene pupils follow mouse position. Ears, nose, bow, and belly have independent Framer Motion reactions; touch taps trigger brief reactions. The `public/picko-neutral.svg` asset supplies the calm expression.
