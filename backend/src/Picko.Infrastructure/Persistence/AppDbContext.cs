@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Picko.Application.Common.Interfaces;
 using Picko.Domain.Common;
+using Picko.Domain.Entities;
 
 namespace Picko.Infrastructure.Persistence;
 
@@ -9,6 +10,8 @@ public class AppDbContext : DbContext, IApplicationDbContext
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
     {
     }
+
+    public DbSet<User> Users => Set<User>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
