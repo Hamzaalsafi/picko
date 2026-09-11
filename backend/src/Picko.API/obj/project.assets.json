@@ -864,24 +864,31 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\hamza\\.nuget\\packages\\": {}
+    "C:\\Users\\User\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\hamza\\Desktop\\web-projects\\picko\\backend\\src\\Picko.API\\Picko.API.csproj",
+      "projectUniqueName": "C:\\Desktop\\picko\\backend\\src\\Picko.API\\Picko.API.csproj",
       "projectName": "Picko.API",
-      "projectPath": "C:\\Users\\hamza\\Desktop\\web-projects\\picko\\backend\\src\\Picko.API\\Picko.API.csproj",
-      "packagesPath": "C:\\Users\\hamza\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\hamza\\Desktop\\web-projects\\picko\\backend\\src\\Picko.API\\obj\\",
+      "projectPath": "C:\\Desktop\\picko\\backend\\src\\Picko.API\\Picko.API.csproj",
+      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+      "outputPath": "C:\\Desktop\\picko\\backend\\src\\Picko.API\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\hamza\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net10.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -889,11 +896,11 @@
           "framework": "net10.0",
           "targetAlias": "net10.0",
           "projectReferences": {
-            "C:\\Users\\hamza\\Desktop\\web-projects\\picko\\backend\\src\\Picko.Application\\Picko.Application.csproj": {
-              "projectPath": "C:\\Users\\hamza\\Desktop\\web-projects\\picko\\backend\\src\\Picko.Application\\Picko.Application.csproj"
+            "C:\\Desktop\\picko\\backend\\src\\Picko.Application\\Picko.Application.csproj": {
+              "projectPath": "C:\\Desktop\\picko\\backend\\src\\Picko.Application\\Picko.Application.csproj"
             },
-            "C:\\Users\\hamza\\Desktop\\web-projects\\picko\\backend\\src\\Picko.Infrastructure\\Picko.Infrastructure.csproj": {
-              "projectPath": "C:\\Users\\hamza\\Desktop\\web-projects\\picko\\backend\\src\\Picko.Infrastructure\\Picko.Infrastructure.csproj"
+            "C:\\Desktop\\picko\\backend\\src\\Picko.Infrastructure\\Picko.Infrastructure.csproj": {
+              "projectPath": "C:\\Desktop\\picko\\backend\\src\\Picko.Infrastructure\\Picko.Infrastructure.csproj"
             }
           }
         }
@@ -943,7 +950,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.400/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.401/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.AspNetCore": "(,10.0.32767]",
           "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",

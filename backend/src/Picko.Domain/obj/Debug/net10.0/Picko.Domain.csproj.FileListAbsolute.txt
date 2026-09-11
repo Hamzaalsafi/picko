@@ -9,3 +9,15 @@ C:\Users\hamza\Desktop\web-projects\picko\backend\src\Picko.Domain\obj\Debug\net
 C:\Users\hamza\Desktop\web-projects\picko\backend\src\Picko.Domain\obj\Debug\net10.0\refint\Picko.Domain.dll
 C:\Users\hamza\Desktop\web-projects\picko\backend\src\Picko.Domain\obj\Debug\net10.0\Picko.Domain.pdb
 C:\Users\hamza\Desktop\web-projects\picko\backend\src\Picko.Domain\obj\Debug\net10.0\ref\Picko.Domain.dll
+C:\Desktop\picko\backend\src\Picko.Domain\bin\Debug\net10.0\Picko.Domain.deps.json
+C:\Desktop\picko\backend\src\Picko.Domain\bin\Debug\net10.0\Picko.Domain.dll
+C:\Desktop\picko\backend\src\Picko.Domain\bin\Debug\net10.0\Picko.Domain.pdb
+C:\Desktop\picko\backend\src\Picko.Domain\obj\Debug\net10.0\Picko.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Desktop\picko\backend\src\Picko.Domain\obj\Debug\net10.0\Picko.Domain.AssemblyInfoInputs.cache
+C:\Desktop\picko\backend\src\Picko.Domain\obj\Debug\net10.0\Picko.Domain.AssemblyInfo.cs
+C:\Desktop\picko\backend\src\Picko.Domain\obj\Debug\net10.0\Picko.Domain.csproj.CoreCompileInputs.cache
+C:\Desktop\picko\backend\src\Picko.Domain\obj\Debug\net10.0\Picko.Domain.sourcelink.json
+C:\Desktop\picko\backend\src\Picko.Domain\obj\Debug\net10.0\Picko.Domain.dll
+C:\Desktop\picko\backend\src\Picko.Domain\obj\Debug\net10.0\refint\Picko.Domain.dll
+C:\Desktop\picko\backend\src\Picko.Domain\obj\Debug\net10.0\Picko.Domain.pdb
+C:\Desktop\picko\backend\src\Picko.Domain\obj\Debug\net10.0\ref\Picko.Domain.dll

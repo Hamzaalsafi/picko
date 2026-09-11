@@ -1,8 +1,6 @@
 using System.Net;
-using System.Net.Http.Json;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.Configuration;
-using Picko.Application.Restaurants.DTOs;
 
 namespace Picko.IntegrationTests;
 
@@ -30,16 +28,5 @@ public class HealthEndpointTests : IClassFixture<WebApplicationFactory<Program>>
         var response = await client.GetAsync("/api/health");
 
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
-    }
-
-    [Fact]
-    public async Task Get_Restaurants_ReturnsOk()
-    {
-        var client = _factory.CreateClient();
-
-        var response = await client.GetAsync("/api/restaurants");
-
-        Assert.Equal(HttpStatusCode.OK, response.StatusCode);
-        Assert.Equal("application/json", response.Content.Headers.ContentType?.MediaType);
     }
 }

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Picko.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+920e99f85df323db2683d192a639c9eb07f2b7ef")]
 [assembly: System.Reflection.AssemblyProductAttribute("Picko.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Picko.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

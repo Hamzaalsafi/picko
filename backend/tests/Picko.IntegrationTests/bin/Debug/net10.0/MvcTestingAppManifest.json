@@ -1,6 +1,6 @@
 {
-  "Picko.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\hamza\\Desktop\\web-projects\\picko\\backend\\src\\Picko.API",
-  "Picko.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\hamza\\Desktop\\web-projects\\picko\\backend\\src\\Picko.Application",
-  "Picko.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\hamza\\Desktop\\web-projects\\picko\\backend\\src\\Picko.Domain",
-  "Picko.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\hamza\\Desktop\\web-projects\\picko\\backend\\src\\Picko.Infrastructure"
+  "Picko.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Desktop\\picko\\backend\\src\\Picko.API",
+  "Picko.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Desktop\\picko\\backend\\src\\Picko.Application",
+  "Picko.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Desktop\\picko\\backend\\src\\Picko.Domain",
+  "Picko.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Desktop\\picko\\backend\\src\\Picko.Infrastructure"
 }
