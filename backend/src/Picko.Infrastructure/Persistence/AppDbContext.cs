@@ -16,24 +16,41 @@ public class AppDbContext : DbContext, IApplicationDbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
+
+        base.OnModelCreating(modelBuilder);
+    }
+
+    public override int SaveChanges()
+    {
+        ApplyAuditInfo();
+
+        return base.SaveChanges();
     }
 
     public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
     {
+        ApplyAuditInfo();
+
+        return base.SaveChangesAsync(cancellationToken);
+    }
+
+    private void ApplyAuditInfo()
+    {
+        var utcNow = DateTime.UtcNow;
+
         foreach (var entry in ChangeTracker.Entries<BaseEntity>())
         {
             switch (entry.State)
             {
                 case EntityState.Added:
-                    entry.Entity.CreatedAtUtc = DateTime.UtcNow;
+                    entry.Entity.CreatedAtUtc = utcNow;
+                    entry.Entity.UpdatedAtUtc = null;
                     break;
 
                 case EntityState.Modified:
-                    entry.Entity.UpdatedAtUtc = DateTime.UtcNow;
+                    entry.Entity.UpdatedAtUtc = utcNow;
                     break;
             }
         }
-
-        return base.SaveChangesAsync(cancellationToken);
     }
 }

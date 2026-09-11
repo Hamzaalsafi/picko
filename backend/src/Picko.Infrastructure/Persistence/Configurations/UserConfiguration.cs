@@ -8,7 +8,12 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
 {
     public void Configure(EntityTypeBuilder<User> builder)
     {
+        builder.ToTable("Users");
+
         builder.HasKey(u => u.Id);
+
+        builder.Property(u => u.Id)
+            .ValueGeneratedNever();
 
         builder.Property(u => u.Name)
             .IsRequired()
@@ -19,9 +24,17 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
             .HasMaxLength(255);
 
         builder.HasIndex(u => u.Email)
-            .IsUnique();
+            .IsUnique()
+            .HasDatabaseName("IX_Users_Email");
 
         builder.Property(u => u.PasswordHash)
+            .IsRequired()
+            .HasMaxLength(255);
+
+        builder.Property(u => u.CreatedAtUtc)
             .IsRequired();
+
+        builder.Property(u => u.UpdatedAtUtc)
+            .IsRequired(false);
     }
 }

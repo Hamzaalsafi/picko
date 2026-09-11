@@ -1,8 +1,19 @@
 namespace Picko.Domain.Exceptions;
 
+public enum ExceptionType
+{
+    Invalid,
+    Conflict,
+    NotFound
+}
+
 public class DomainException : Exception
 {
-    public DomainException(string message) : base(message)
+    public ExceptionType Type { get; }
+
+    public DomainException(ExceptionType type, string message)
+        : base(message)
     {
+        Type = type;
     }
 }
