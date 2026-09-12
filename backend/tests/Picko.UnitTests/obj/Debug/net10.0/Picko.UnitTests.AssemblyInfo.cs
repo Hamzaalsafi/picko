@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Picko.UnitTests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+250cff3bd394d9d31acc3c766597e67a0d646115")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+98a320dc3d423749433aeacf6441af81a718abed")]
 [assembly: System.Reflection.AssemblyProductAttribute("Picko.UnitTests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Picko.UnitTests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
