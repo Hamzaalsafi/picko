@@ -3,6 +3,8 @@ import { useEffect, useRef, useState, type PointerEvent } from "react";
 import { useInView, useReducedMotion, useSpring, type MotionStyle } from "framer-motion";
 import type { BearZone } from "./BearPart";
 
+let lastMouse: {x:number;y:number} | null = null;
+
 export default function useBearInteraction(trackEyes: boolean) {
   const ref = useRef<SVGSVGElement>(null);
   const reduce = useReducedMotion();
@@ -12,25 +14,66 @@ export default function useBearInteraction(trackEyes: boolean) {
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const tilt = useSpring(0, { stiffness: 180, damping: 18 });
   const lift = useSpring(0, { stiffness: 180, damping: 18 });
-  const eyeX = useSpring(0, { stiffness: 210, damping: 24 });
-  const eyeY = useSpring(0, { stiffness: 210, damping: 24 });
+  const eyeX = useSpring(0, { stiffness: 320, damping: 32 });
+  const eyeY = useSpring(0, { stiffness: 320, damping: 32 });
+  const rightX = useSpring(0, { stiffness: 320, damping: 32 });
+  const rightY = useSpring(0, { stiffness: 320, damping: 32 });
   useEffect(() => {
     if (!trackEyes || reduce || !inView) return;
-    function look(event: globalThis.PointerEvent) {
-      if (event.pointerType !== "mouse") return;
-      const bounds = ref.current?.getBoundingClientRect();
-      if (!bounds || bounds.bottom < 0 || bounds.top > window.innerHeight) return;
-      const centerX = bounds.left + bounds.width * .45;
-      const centerY = bounds.top + bounds.height * .4;
-      eyeX.set(Math.max(-8, Math.min(8, (event.clientX - centerX) / 35)));
-      eyeY.set(Math.max(-5, Math.min(5, (event.clientY - centerY) / 45)));
+    let frame = 0;
+    function update() {
+      frame = 0;
+      const svg = ref.current;
+      const matrix = svg?.getScreenCTM();
+      if (!svg || !matrix) return;
+      // Map the pointer into SVG coordinates, including scale and pose rotation.
+      const pointer = lastMouse ? new DOMPoint(lastMouse.x, lastMouse.y).matrixTransform(matrix.inverse()) : null;
+      const eyes = ["left", "right"].map(side => {
+        const white = svg.querySelector<SVGGraphicsElement>('[data-part="'+side+'-eye"]');
+        const iris = svg.querySelector<SVGEllipseElement>('[data-part="'+side+'-pupil"] ellipse');
+        if (!white || !iris) return null;
+        const box = white.getBBox();
+        return {x:box.x+box.width/2,y:box.y+box.height/2,iris,
+          travelX:Math.max(0,box.width/2-iris.rx.baseVal.value-2),
+          travelY:Math.max(0,box.height/2-iris.ry.baseVal.value-2)};
+      });
+      const visible = eyes.filter(eye => eye !== null);
+      if (!visible.length) return;
+      const cx = visible.reduce((sum,eye)=>sum+eye.x,0)/visible.length;
+      const cy = visible.reduce((sum,eye)=>sum+eye.y,0)/visible.length;
+      const dx = pointer ? pointer.x-cx : 0;
+      const dy = pointer ? pointer.y-cy : 0;
+      const distance = Math.hypot(dx,dy,170);
+      eyes.forEach((eye,index)=>{
+        if (!eye) return;
+        // Both eyes look in one direction; their own outlines limit the travel.
+        const x = eye.x-eye.iris.cx.baseVal.value + dx/distance*eye.travelX;
+        const y = eye.y-eye.iris.cy.baseVal.value + dy/distance*eye.travelY;
+        (index===0?eyeX:rightX).set(x);
+        (index===0?eyeY:rightY).set(y);
+      });
     }
-    function rest() { eyeX.set(0); eyeY.set(0); }
-    window.addEventListener("pointermove", look, { passive: true });
-    document.documentElement.addEventListener("pointerleave", rest);
-    window.addEventListener("blur", rest);
-    return () => { window.removeEventListener("pointermove", look); document.documentElement.removeEventListener("pointerleave", rest); window.removeEventListener("blur", rest); };
-  }, [trackEyes, reduce, inView, eyeX, eyeY]);
+    function schedule(){if(!frame) frame=requestAnimationFrame(update);}
+    function look(event:globalThis.PointerEvent){
+      if(event.pointerType!=="mouse") return;
+      lastMouse={x:event.clientX,y:event.clientY};schedule();
+    }
+    function rest(){lastMouse=null;schedule();}
+    schedule();
+    window.addEventListener("pointermove",look,{passive:true});
+    window.addEventListener("scroll",schedule,{passive:true});
+    window.addEventListener("resize",schedule);
+    window.addEventListener("blur",rest);
+    document.documentElement.addEventListener("pointerleave",rest);
+    return ()=>{
+      cancelAnimationFrame(frame);
+      window.removeEventListener("pointermove",look);
+      window.removeEventListener("scroll",schedule);
+      window.removeEventListener("resize",schedule);
+      window.removeEventListener("blur",rest);
+      document.documentElement.removeEventListener("pointerleave",rest);
+    };
+  }, [trackEyes, reduce, inView, eyeX, eyeY, rightX, rightY]);
   useEffect(() => () => { if (timer.current) clearTimeout(timer.current); }, []);
   function zoneFor(event: PointerEvent<SVGSVGElement>): BearZone {
     const target = event.target as Element;
@@ -58,6 +101,6 @@ export default function useBearInteraction(trackEyes: boolean) {
     if (timer.current) clearTimeout(timer.current);
     timer.current = setTimeout(() => setActive(""), 900);
   }
-  const style = { rotate: tilt, y: lift, originX: "50%", originY: "80%", "--look-x": eyeX, "--look-y": eyeY } as MotionStyle;
+  const style = { rotate: tilt, y: lift, originX: "50%", originY: "80%", "--look-x": eyeX, "--look-y": eyeY, "--look-right-x": rightX, "--look-right-y": rightY } as MotionStyle;
   return { ref, reduce, inView, active, hovered, style, move, leave, tap };
 }

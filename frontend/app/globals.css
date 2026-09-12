@@ -40,3 +40,63 @@
 @media(max-width:360px){.nav-inner{padding-inline:12px}.nav-inner .wordmark{font-size:19px}.brand-bear{width:25px;height:25px}.nav-actions{gap:5px}.language-switch a{padding:5px 6px;font-size:9px}[dir=rtl] .hero h1{font-size:42px}[dir=rtl] .hero-actions{gap:10px}[dir=rtl] .hero-actions .button{font-size:10px;padding:14px 10px}[dir=rtl] .story-heading h2{font-size:28px}[dir=rtl] .hero-bubble{right:5%}}
 @media(prefers-reduced-motion:reduce){.hero-mascot{transform:none!important}}
 .picko-svg[data-in-view=false],.picko-svg[data-in-view=false] *{animation-play-state:paused!important}
+/* Final rhythm and Arabic-specific composition. */
+.hero-copy{min-width:0}.hero-copy h1{padding-bottom:5px}.hero-actions .button{min-height:52px}.floating-chip{transition:box-shadow .3s,border-color .3s,scale .3s}.floating-chip:hover{scale:1.055;border-color:#bcab95;box-shadow:0 14px 28px #563b201c}.button>span:last-child{transition:translate .3s}.button:hover>span:last-child{translate:3px -2px}.hero-mascot{transition:filter .45s}.hero-bubble{transition:box-shadow .4s}.hero-scene:has(.is-delighted) .hero-bubble{box-shadow:0 12px 32px #95654016}.is-delighted [data-part=left-brow],.is-delighted [data-part=right-brow]{translate:0 -7px}.picko-svg [data-part=left-brow],.picko-svg [data-part=right-brow]{transition:translate .35s}.is-delighted [data-part=resting-right-paw]{translate:0 -5px}.picko-svg [data-part=resting-right-paw]{transition:translate .4s}.pose-excited,.pose-celebrating{animation:picko-breathe 4.5s ease-in-out infinite}@keyframes picko-breathe{0%,100%{translate:0 0}50%{translate:0 -4px}}
+[dir=rtl] h1,[dir=rtl] h2,[dir=rtl] h3{font-weight:800;line-height:1.3;text-wrap:balance}[dir=rtl] .hero h1{font-size:clamp(49px,5.4vw,70px);line-height:1.35;margin-bottom:24px}[dir=rtl] .arabic-title-line{display:block;white-space:nowrap}[dir=rtl] .hero-picko{margin:0;display:inline-block}[dir=rtl] .hero-picko svg{bottom:0;height:13px}[dir=rtl] .hero-copy>p{font-size:18px;line-height:1.8;max-width:430px;margin-bottom:30px}[dir=rtl] .hero-kicker{font-size:12px;margin-bottom:23px}[dir=rtl] .hero-footnote{font-size:12px;line-height:1.7}[dir=rtl] .hero-actions .button{font-size:15px}[dir=rtl] .hero-actions .text-link{font-size:13px}[dir=rtl] .nav-links{font-size:14px}[dir=rtl] .nav-cta{font-size:13px}[dir=rtl] .eyebrow{font-size:12px;line-height:1.7;margin-bottom:15px}[dir=rtl] .section-heading p,[dir=rtl] .problem-section p,[dir=rtl] .personalization p,[dir=rtl] .group-section p,[dir=rtl] .social-section p{font-size:17px;line-height:1.9}[dir=rtl] .step-card p{font-size:15px;line-height:1.8}[dir=rtl] .step-card h3{font-size:26px}[dir=rtl] .hero-bubble{font-size:21px;font-weight:500;line-height:1.5;text-align:center;padding:17px 24px}[dir=rtl] .floating-chip{font-size:13px}[dir=rtl] .hero-pick-card strong{font-size:16px}[dir=rtl] .hero-pick-card small{font-size:12px}[dir=rtl] .card-eyebrow{font-size:10px;letter-spacing:0}[dir=rtl] .hero-pick-card .card-eyebrow{font-size:10px;letter-spacing:0}[dir=rtl] .story-heading{height:165px}[dir=rtl] .story-heading h2{font-size:clamp(35px,4.1vw,55px);line-height:1.35}[dir=rtl] .expression-tabs button{font-size:14px}[dir=rtl] .mascot-quote{font-size:23px;line-height:1.7}[dir=rtl] .mascot-note{font-size:15px}[dir=rtl] .category-card small{font-size:13px}[dir=rtl] .landing-footer p,[dir=rtl] .landing-footer>span,[dir=rtl] .landing-footer>a:last-child{font-size:12px}[dir=rtl] .demo-content p{font-size:15px}[dir=rtl] .answer-grid strong{font-size:15px}[dir=rtl] .answer-grid small{font-size:12px}[dir=rtl] .hero{grid-template-columns:1fr 1.1fr}
+@media(min-width:701px) and (max-width:1000px){[dir=rtl] .hero h1{font-size:clamp(35px,5vw,52px)}[dir=rtl] .hero-copy>p{font-size:16px}[dir=rtl] .hero-actions{gap:12px}[dir=rtl] .hero-actions .button{font-size:13px;padding:15px}[dir=rtl] .hero-bubble{font-size:18px}}
+@media(max-width:700px){[dir=rtl] .hero{grid-template-columns:1fr;padding-top:42px;gap:34px}[dir=rtl] .hero h1{font-size:clamp(38px,10.8vw,61px);line-height:1.4;margin-bottom:20px}[dir=rtl] .hero-copy>p{font-size:16px;line-height:1.8;margin-bottom:23px}[dir=rtl] .hero-kicker{font-size:11px;margin-bottom:17px}[dir=rtl] .hero-footnote{font-size:11px;margin-top:25px}[dir=rtl] .hero-actions{gap:17px}[dir=rtl] .hero-actions .button{font-size:13px;padding:14px 17px}[dir=rtl] .hero-actions .text-link{font-size:12px}[dir=rtl] .hero-scene{height:390px}[dir=rtl] .hero-bubble{font-size:18px;min-width:145px;min-height:76px}[dir=rtl] .floating-chip{font-size:11px}[dir=rtl] .hero-pick-card strong{font-size:14px}[dir=rtl] .hero-pick-card small{font-size:10px}[dir=rtl] .hero-pick-card .card-eyebrow{font-size:8px}[dir=rtl] .hero-pick-card{gap:10px}[dir=rtl] .section-heading p,[dir=rtl] .problem-section p,[dir=rtl] .personalization p,[dir=rtl] .group-section p,[dir=rtl] .social-section p{font-size:16px}[dir=rtl] .step-card{grid-template-columns:120px 1fr;gap:0 16px}[dir=rtl] .step-visual .picko-svg{width:125px}[dir=rtl] .step-card h3{font-size:22px}[dir=rtl] .step-card p{font-size:14px}[dir=rtl] .story-heading{height:140px;padding-inline:22px}[dir=rtl] .story-heading h2{font-size:32px}[dir=rtl] .mascot-note{font-size:12px}[dir=rtl] .mascot-quote{font-size:19px}[dir=rtl] .social-label{font-size:9px}[dir=rtl] .social-post h3{font-size:21px}[dir=rtl] .sticker-card strong{font-size:20px}[dir=rtl] .section-heading h2{font-size:34px}}
+@media(max-width:360px){[dir=rtl] .hero h1{font-size:36px}[dir=rtl] .hero-actions{gap:10px}[dir=rtl] .hero-actions .button{font-size:12px;padding:13px}[dir=rtl] .hero-actions .text-link{font-size:11px}[dir=rtl] .hero-scene{height:355px}[dir=rtl] .floating-chip{padding:9px;font-size:10px}[dir=rtl] .step-card{grid-template-columns:105px 1fr}[dir=rtl] .step-visual .picko-svg{width:110px}}
+.expression-art{width:330px;position:relative;flex-shrink:0}.expression-art .picko-svg{width:100%}.expression-art>div{width:100%}
+@media(max-width:700px){.expression-art{width:230px}.hero-scene .chip-watch{top:95px}}
+.expression-art{margin-inline:auto}.expression-blink{transform-box:fill-box;transform-origin:center;animation:blink 6.4s ease-in-out infinite}.pose-confused .expression-blink{animation-delay:-2.1s}.pose-proud .expression-blink{animation-delay:-3.7s}
+@media(prefers-reduced-motion:reduce){.expression-blink{animation:none}.is-delighted [data-part]{translate:none}}
+.landing{overflow-x:clip}
+@media(min-width:701px) and (max-width:900px){.hero{min-height:630px;padding-top:50px;padding-bottom:60px}}
+[dir=rtl] .option-arrow,[dir=rtl] .category-arrow{scale:-1 1}[dir=rtl] .button:hover>span:last-child{translate:-3px -2px}
+/* Keep the decorative arrow outside the copy in both writing directions. */
+.problem-answer{padding-inline-end:82px;min-height:64px}.clarity-arrow{position:absolute;inset-inline-end:0;top:4px;width:60px;height:48px;color:#b99972;pointer-events:none}[dir=rtl] .clarity-arrow{transform:scaleX(-1)}
+@media(max-width:700px){.problem-answer{padding-inline-end:58px}.clarity-arrow{width:43px;height:39px;top:8px}[dir=rtl] .problem-answer{font-size:17px}}
+.picko-svg[data-track-eyes=true] [data-part=right-pupil]{transform:translate(calc(var(--look-right-x,0) * 1px),calc(var(--look-right-y,0) * 1px))}
+/* Hover feedback belongs to the visual, separate from the card entrance. */
+.step-visual{transition:box-shadow .3s ease,background-color .3s ease}.step-card:hover .step-visual{box-shadow:0 12px 28px #59351f12}.step-note{transition:rotate .35s ease}.step-card:hover .step-note{rotate:0deg}
+@media(hover:hover) and (prefers-reduced-motion:no-preference){.category-card:hover{transform:translateY(-3px);box-shadow:0 10px 22px #59351f10}}
+@media(hover:none){button:hover,.button:hover,.category-card:hover{transform:none}.floating-chip:hover{scale:1}}
+.pose-sleepy [data-part=sleepy-dream],.pose-loving [data-part=floating-hearts]{animation:picko-daydream 4s ease-in-out infinite}.pose-winking [data-part=wink-sparkle]{transform-box:fill-box;transform-origin:center;animation:picko-sparkle-in .5s ease-out both}.pose-surprised [data-part=surprise-marks]{animation:picko-sparkle-in .35s ease-out both;transform-box:fill-box;transform-origin:center}.expression-tabs{max-width:800px;margin-inline:auto;row-gap:10px}@keyframes picko-daydream{0%,100%{translate:0 0;opacity:.8}50%{translate:0 -7px;opacity:1}}@keyframes picko-sparkle-in{from{opacity:0;scale:.6}to{opacity:1;scale:1}}
+/* Compact phone hero: keep the mascot visible alongside the introduction. */
+@media(max-width:480px){
+.hero.section,[dir=rtl] .hero.section{padding-top:24px;padding-bottom:36px;gap:14px}
+.hero-copy{display:contents}
+.hero-kicker,[dir=rtl] .hero-kicker{order:0;margin:0;font-size:9px}
+.hero h1,[dir=rtl] .hero h1{order:1;margin:0;padding:0}
+.hero h1{font-size:clamp(43px,12.3vw,56px);line-height:1.04;letter-spacing:-2.7px}
+[dir=rtl] .hero h1{font-size:clamp(34px,9.8vw,44px);line-height:1.3;letter-spacing:0}
+.hero-copy>p,[dir=rtl] .hero-copy>p{order:2;margin:0;font-size:12px;line-height:1.65}
+.hero-actions,[dir=rtl] .hero-actions{order:3;margin:0;gap:14px}
+.hero-actions .button,[dir=rtl] .hero-actions .button{min-height:46px;padding:12px 16px}
+.hero-scene,[dir=rtl] .hero-scene{order:4;height:305px;max-width:330px;margin:8px auto 12px}
+.hero-mascot{top:35px;width:82%;left:11%}
+.hero-bubble,[dir=rtl] .hero-bubble{top:-1px;right:9%;min-height:58px;min-width:120px;padding:10px 15px;font-size:14px;line-height:1.35}
+.hero-scene .floating-chip,[dir=rtl] .hero-scene .floating-chip{font-size:9px;padding:8px 9px;border-radius:10px}
+.hero-scene .floating-chip span{font-size:15px;margin-inline-end:5px}
+.hero-scene .chip-eat{top:58px;left:-2px}.hero-scene .chip-watch{top:66px;right:-2px}
+.hero-scene .chip-read,.hero-scene .chip-out{bottom:81px}
+.hero-pick-card{bottom:8px;padding:10px;gap:9px}.tiny-movie{min-width:36px;width:36px;height:48px;font-size:20px}
+.hero-pick-card strong,[dir=rtl] .hero-pick-card strong{font-size:11px}.hero-pick-card small,[dir=rtl] .hero-pick-card small{font-size:8px}
+.hero-pick-card .card-eyebrow,[dir=rtl] .hero-pick-card .card-eyebrow{font-size:7px;margin-bottom:4px}
+.scene-caption,[dir=rtl] .scene-caption{bottom:-12px;font-size:10px}
+.hero-footnote,[dir=rtl] .hero-footnote{order:5;margin:0;font-size:9px;justify-content:center}
+}
+/* The decision screen uses a compact app layout instead of landing-page spacing. */
+.choose-page .demo-section{padding-top:22px;padding-bottom:22px}
+.choose-page .section-heading{margin-bottom:20px}
+.choose-page .section-heading .eyebrow{margin-bottom:8px}
+.choose-page .section-heading h1,[dir=rtl] .choose-page .section-heading h1{font-size:32px;line-height:1.2;margin-bottom:10px}
+.choose-page .section-heading p{margin-bottom:0;font-size:13px}
+.choose-page .demo-card{min-height:0}
+.choose-page .demo-top,.choose-page .demo-bottom{padding:14px 22px}
+.choose-page .demo-progress{padding-top:16px}
+.choose-page .demo-content{padding-top:16px}
+.choose-page .demo-aside{padding-top:45px}
+.choose-page .demo-aside .picko-svg{max-width:295px}
+.choose-page .demo-speech{font-size:16px;padding:12px 18px}
+@media(max-width:700px){.choose-page .demo-section{padding:18px 20px}.choose-page .section-heading h1,[dir=rtl] .choose-page .section-heading h1{font-size:26px;line-height:1.25;letter-spacing:-1px}.choose-page .section-heading{margin-bottom:15px}.choose-page .section-heading .eyebrow{font-size:9px}.choose-page .section-heading p{font-size:11px}.choose-page .demo-content{padding:14px 18px 8px}.choose-page .demo-content h2,[dir=rtl] .choose-page .demo-content h2{font-size:22px;margin-bottom:8px}.choose-page .demo-content p,[dir=rtl] .choose-page .demo-content p{font-size:12px;margin-bottom:10px}.choose-page .answer-grid{gap:9px;margin-top:15px}.choose-page .answer-grid button{padding:12px}.choose-page .answer-icon{font-size:21px;margin-bottom:5px}.choose-page .demo-top,.choose-page .demo-bottom{padding:12px 18px}.choose-page .result-art{height:85px;margin:10px 0}.choose-page .result-art>span{font-size:42px}.choose-page .result-art i{font-size:16px}.choose-page .result-reason{margin:8px 0}}

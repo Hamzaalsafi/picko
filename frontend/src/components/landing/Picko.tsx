@@ -1,4 +1,5 @@
 "use client";
+import ExtraArtwork from "./ExtraArtwork";
 import { useLocale } from "@/src/i18n/LocaleProvider";
 import ExpressionArtwork from "./ExpressionArtwork";
 import ThinkingArtwork from "./ThinkingArtwork";
@@ -6,15 +7,15 @@ import { useId } from "react";
 import BearPart, { BearInteraction } from "./BearPart";
 import useBearInteraction from "./useBearInteraction";
 import { motion } from "framer-motion";
-export type PickoPose = "neutral" | "wave" | "thinking" | "excited" | "confused" | "celebrating" | "facepalm" | "proud";
-export default function Picko({pose = "neutral", className = "", trackEyes = false}: {pose?: PickoPose; className?: string; trackEyes?: boolean}) {
+export type PickoPose = "neutral" | "wave" | "thinking" | "excited" | "confused" | "celebrating" | "facepalm" | "proud" | "sleepy" | "winking" | "loving" | "surprised";
+export default function Picko({pose = "neutral", className = "", trackEyes = false, reaction = false}: {pose?: PickoPose; className?: string; trackEyes?: boolean; reaction?: boolean}) {
 const {t,locale}=useLocale();
 const uid = useId().replace(/:/g, "");
 const { ref, reduce, inView, active, hovered, style, move, leave, tap } = useBearInteraction(trackEyes);
 
-return (<motion.svg ref={ref} style={style} data-in-view={inView} data-active-part={active} data-track-eyes={trackEyes} onPointerMove={move} onPointerLeave={leave} onPointerDown={tap} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 750" className={`picko-svg pose-${pose} ${className}`} role="img" aria-label={locale === "ar" ? `بيكو الدب، ${t(pose)}` : `Picko the bear, ${pose}`}><title>{t("Picko, your decision companion")}</title>
+return (<motion.svg ref={ref} style={style} data-in-view={inView} data-active-part={active} data-track-eyes={trackEyes} onPointerMove={move} onPointerLeave={leave} onPointerDown={tap} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 750" className={`picko-svg pose-${pose} ${reaction ? "is-delighted" : ""} ${className}`} role="img" aria-label={locale === "ar" ? `بيكو الدب، ${t(reaction ? "excited" : pose)}` : `Picko the bear, ${reaction ? "excited" : pose}`}><title>{t("Picko, your decision companion")}</title>
 
-<BearInteraction.Provider value={{ active, reduced: !!reduce || !inView }}>{pose === "thinking" ? <ThinkingArtwork uid={uid} /> : pose !== "wave" ? <ExpressionArtwork uid={uid} pose={pose} /> : <><defs>
+<BearInteraction.Provider value={{ active, reduced: !!reduce || !inView }}>{pose === "sleepy" || pose === "winking" || pose === "loving" || pose === "surprised" ? <ExtraArtwork uid={uid} pose={pose} /> : pose === "thinking" ? <ThinkingArtwork uid={uid} /> : pose !== "wave" ? <ExpressionArtwork uid={uid} pose={pose} delighted={reaction} /> : <><defs>
  <linearGradient id={`${uid}-fur`} data-part="fur" x2="0.8" y2="1"><stop stopColor="#a77a52"/><stop offset="1" stopColor="#956540"/></linearGradient>
  <linearGradient id={`${uid}-tan`} data-part="tan" x2="0.7" y2="1"><stop stopColor="#eac08c"/><stop offset="1" stopColor="#d9a773"/></linearGradient>
  <linearGradient id={`${uid}-blue`} data-part="blue" x2="0.4" y2="1"><stop stopColor="#588dbe"/><stop offset="1" stopColor="#386eaa"/></linearGradient>
@@ -36,10 +37,10 @@ return (<motion.svg ref={ref} style={style} data-in-view={inView} data-active-pa
  <path id={`${uid}-left-brow`} data-part="left-brow" stroke="none" fill="#60381e" d="M184 235 C190 220 207 211 216 214 C228 221 210 229 201 233 C190 244 178 251 184 235 Z"/>
  <path id={`${uid}-right-brow`} data-part="right-brow" stroke="none" fill="#60381e" d="M410 190 C411 175 435 180 448 192 C463 209 439 201 428 199 C417 198 409 195 410 190 Z"/>
  <motion.g className="picko-eyes" style={{ transformBox: "fill-box", transformOrigin: "center" }} animate={{ scaleY: reduce ? 1 : [1, 1, 0.08, 1, 1] }} transition={{ duration: 5, times: [0, 0.43, 0.45, 0.47, 1], repeat: Infinity }}><path id={`${uid}-left-eye`} data-part="left-eye" fill="#fffaf0" strokeWidth="6" d="M201 336 C187 315 194 287 210 278 C232 266 252 282 256 303 L254 331 C235 326 215 333 201 336 Z"/>
- <clipPath id={`${uid}-left-eye-clip`}><use href={`#${uid}-left-eye`} /></clipPath><g clipPath={`url(#${uid}-left-eye-clip)`}><path id={`${uid}-left-pupil`} data-part="left-pupil" stroke="none" fill="#633d26" d="M219 331 C207 317 210 297 221 291 C237 283 251 295 255 307 L254 331 Z"/></g>
+ <clipPath id={`${uid}-left-eye-clip`}><use href={`#${uid}-left-eye`} /></clipPath><g clipPath={`url(#${uid}-left-eye-clip)`}><g id={`${uid}-left-pupil`} data-part="left-pupil" stroke="none"><ellipse cx="233" cy="313" rx="19" ry="25" fill="#815334"/><ellipse cx="233" cy="314" rx="13" ry="19" fill="#38251d"/><ellipse cx="228" cy="303" rx="5.5" ry="6.5" fill="#fffdf5"/><circle cx="240" cy="321" r="2.5" fill="#f3d5ac" opacity=".8"/></g></g>
  <path id={`${uid}-right-eye`} data-part="right-eye" fill="#fffaf0" strokeWidth="6" d="M408 306 C395 284 404 252 421 242 C442 232 462 247 466 267 L463 294 C443 291 423 299 408 306 Z"/>
- <clipPath id={`${uid}-right-eye-clip`}><use href={`#${uid}-right-eye`} /></clipPath><g clipPath={`url(#${uid}-right-eye-clip)`}><path id={`${uid}-right-pupil`} data-part="right-pupil" stroke="none" fill="#633d26" d="M409 304 C402 287 408 262 422 258 C440 251 451 266 450 293 Z"/></g>
- <g className="eye-highlights" fill="#fffdf5" stroke="none"><ellipse cx="240" cy="299" rx="6" ry="6"/><ellipse cx="436" cy="268" rx="6" ry="6"/></g>
+ <clipPath id={`${uid}-right-eye-clip`}><use href={`#${uid}-right-eye`} /></clipPath><g clipPath={`url(#${uid}-right-eye-clip)`}><g id={`${uid}-right-pupil`} data-part="right-pupil" stroke="none"><ellipse cx="432" cy="283" rx="19" ry="25" fill="#815334"/><ellipse cx="432" cy="284" rx="13" ry="19" fill="#38251d"/><ellipse cx="427" cy="273" rx="5.5" ry="6.5" fill="#fffdf5"/><circle cx="439" cy="291" r="2.5" fill="#f3d5ac" opacity=".8"/></g></g>
+ 
  </motion.g><g fill="#d98265" stroke="none"><ellipse cx="187" cy="373" rx="34" ry="21" transform="rotate(-11 187 373)"/><ellipse cx="493" cy="321" rx="33" ry="21" transform="rotate(-10 493 321)"/></g>
  <path id={`${uid}-mouth`} data-part="mouth" fill="#64351f" strokeWidth="7" d="M304 387 C326 394 376 387 394 373 C394 412 377 435 354 434 C329 435 313 415 304 387 Z"/>
  <path id={`${uid}-tongue`} data-part="tongue" fill="#df8064" stroke="none" d="M324 412 C337 399 362 403 376 414 C367 433 340 433 324 412 Z"/>

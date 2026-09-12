@@ -1,10 +1,10 @@
 "use client";
 import { useLocale } from "@/src/i18n/LocaleProvider";
 
-import { motion, MotionConfig } from "framer-motion";
+import { motion, MotionConfig, AnimatePresence, useReducedMotion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { HeroScene, RevealSection, ScrollProgress } from "./Motion";
+import { HeroScene, RevealSection, RevealCard, ScrollProgress } from "./Motion";
 import Picko, { type PickoPose } from "./Picko";
 import ScrollStory from "./ScrollStory";
 import { categories } from "./categories";
@@ -47,7 +47,7 @@ function useStartCategory() {
     router.push(path(`/choose?category=${encodeURIComponent(name)}`));
 }
 export function Hero() {
-  const { t } = useLocale();
+  const { t, isArabic } = useLocale();
 
   const startCategory = useStartCategory();
   const [eager, setEager] = useState(false);
@@ -65,6 +65,7 @@ export function Hero() {
           {t("SMALL BEAR. BIG DECISION ENERGY.")}
         </div>
         <h1>
+          {isArabic ? <><span className="arabic-title-line">محتار؟</span><span className="arabic-title-line">خلّي <span className="hero-picko">بيكو<svg viewBox="0 0 250 24" aria-hidden="true"><path d="M4 17 Q111 -2 245 11 M29 23 Q123 8 219 18" /></svg></span> يختار<span className="blue-text">.</span></span></> : <>
           {t("Can’t decide?")}
           <br />
           {t("Let")}{" "}
@@ -76,7 +77,7 @@ export function Hero() {
           </span>
           <br />
           {t("decide")}
-          <span className="blue-text">.</span>
+          <span className="blue-text">.</span></>}
         </h1>
         <p>
           {t("Too many options. Too many open tabs.")}
@@ -153,9 +154,9 @@ export function Hero() {
           <span>🌙</span>
           {t("Where to go?")}
         </button>
-        <div className="hero-mascot">
-          <Picko trackEyes pose={eager ? "excited" : "neutral"} />
-        </div>
+        <motion.div className="hero-mascot" initial={false} animate={{scale:eager?1.025:1}} transition={{type:"spring",stiffness:240,damping:22}}>
+          <Picko trackEyes reaction={eager} />
+        </motion.div>
         <div className="hero-pick-card">
           <div className="tiny-movie">
             ☾
@@ -216,7 +217,7 @@ export function ProblemSection() {
           {t("You don’t need more options.")}
           <br />
           <strong>{t("You need one good answer.")}</strong>
-          <span>↗</span>
+          <svg className="clarity-arrow" viewBox="0 0 64 48" fill="none" aria-hidden="true"><path d="M5 41 C27 40 40 29 51 10 M34 12 L53 7 L57 27" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" /></svg>
         </div>
       </div>
       <div className="choice-cloud">
@@ -251,7 +252,7 @@ export function HowItWorks() {
   const { t } = useLocale();
 
   return (
-    <RevealSection className="section how-section" id="how-it-works">
+    <section className="section how-section" id="how-it-works">
       <div className="section-heading">
         <span className="eyebrow">
           {t("THREE LITTLE STEPS. ONE BIG SIGH OF RELIEF.")}
@@ -282,14 +283,10 @@ export function HowItWorks() {
             note: "Yep. This is the one.",
           },
         ].map((step, index) => (
-          <motion.article
+          <RevealCard
             className="step-card"
             key={t(step.title)}
-            initial={false}
-            whileInView={{ opacity: [0.3, 1], y: [28, 0] }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6, delay: index * 0.12 }}
-            whileHover={{ y: -7 }}
+            index={index}
           >
             <div className="step-visual">
               <span className="step-number">0{index + 1}</span>
@@ -298,10 +295,10 @@ export function HowItWorks() {
             </div>
             <h3>{t(step.title)}</h3>
             <p>{t(step.copy)}</p>
-          </motion.article>
+          </RevealCard>
         ))}
       </div>
-    </RevealSection>
+    </section>
   );
 }
 export function Personalization() {
@@ -403,7 +400,7 @@ export function Categories() {
             "👕 Style",
           ].map((c) => (
             <span key={c}>
-              {c}
+              {t(c)}
               <small>{t("Coming later")}</small>
             </span>
           ))}
@@ -475,14 +472,10 @@ export function GroupDecision() {
             <div>
               <small>{t("PICKO HAS ENTERED THE CHAT")}</small>
               <strong>
-                {decided
-                  ? "A new café. Then a sunset walk."
-                  : "Alright. I’ll decide."}
+                {t(decided ? "A new café. Then a sunset walk." : "Alright. I’ll decide.")}
               </strong>
               <p>
-                {decided
-                  ? "Low effort. Good company. A plan everyone can get behind. ☕"
-                  : "Someone had to say it. 😌"}
+                {t(decided ? "Low effort. Good company. A plan everyone can get behind. ☕" : "Someone had to say it. 😌")}
               </p>
             </div>
           </div>
@@ -493,9 +486,14 @@ export function GroupDecision() {
 }
 export function MascotSection() {
   const { t } = useLocale();
+  const reduce = useReducedMotion();
 
   const [pose, setPose] = useState<PickoPose>("proud");
   const expressions: { pose: PickoPose; label: string; quote: string }[] = [
+    {pose:"sleepy",label:"Sleepy",quote:"One little nap. Then we decide."},
+    {pose:"winking",label:"A little wink",quote:"Trust me. I know a good pick."},
+    {pose:"loving",label:"In love",quote:"This one has my whole heart."},
+    {pose:"surprised",label:"Surprised",quote:"Wait. That was actually your first choice?"},
     {
       pose: "thinking",
       label: "Thinking",
@@ -548,7 +546,7 @@ export function MascotSection() {
           <br />
           {t("questionable dance moves ↘")}
         </span>
-        <Picko pose={pose} />
+        <div className="expression-art"><AnimatePresence mode="wait" initial={false}><motion.div key={pose} initial={{opacity:0,scale:reduce?1:0.985}} animate={{opacity:1,scale:1}} exit={{opacity:0}} transition={{duration:reduce?0:0.14}}><Picko pose={pose} trackEyes /></motion.div></AnimatePresence></div>
         <span className="mascot-note note-right">
           {t("↙ big heart.")}
           <br />
@@ -580,12 +578,12 @@ export function SocialSection() {
   async function share() {
     try {
       await navigator.clipboard.writeText(
-        "POV: You said ‘I don’t care, you choose.’ Meet your new most decisive friend: Picko. pickoforme.com",
+        t("POV: You said ‘I don’t care, you choose.’ Meet your new most decisive friend: Picko. pickoforme.com"),
       );
       setCopied(true);
     } catch {
       setMessage(
-        "POV: You said ‘I don’t care, you choose.’ — PickoGo · pickoforme.com",
+        t("POV: You said ‘I don’t care, you choose.’ — PickoGo · pickoforme.com"),
       );
     }
   }
@@ -670,9 +668,9 @@ export function Footer() {
   const { t, path } = useLocale();
   return (
     <footer className="landing-footer">
-      <a className="wordmark" href="#">
-        {t("Picko")}
-        <span>{t("Go")}</span>
+      <a className="wordmark" dir="ltr" href={path()}>
+        Picko
+        <span>Go</span>
         <i>✦</i>
       </a>
       <p>{t("A little less overthinking. A little more life.")}</p>

@@ -1,12 +1,17 @@
+import { motion, useReducedMotion } from "framer-motion";
 import BearPart from "./BearPart";
 import type { PickoPose } from "./Picko";
 export default function ExpressionArtwork({
   pose,
   uid,
+  delighted = false,
 }: {
   pose: PickoPose;
   uid: string;
+  delighted?: boolean;
 }) {
+  const reduced = useReducedMotion();
+  const expressionTransition = { duration: reduced ? 0 : 0.36, ease: [0.22, 1, 0.36, 1] as const };
   switch (pose) {
     case "neutral":
       return (
@@ -50,7 +55,7 @@ export default function ExpressionArtwork({
               id={`${uid}-neutral-body`}
               data-part="body"
               fill={`url(#${uid}-neutral-fur)`}
-              d="M162 497 C105 530 65 591 67 645 C64 695 92 716 144 711 L566 667 C581 613 551 535 511 455 Z"
+              d="M162 497 C105 530 65 591 67 645 C64 695 92 716 144 711 C282 723 452 716 540 682 C570 653 553 542 511 455 Z"
             />
 
             <BearPart zone="belly">
@@ -149,7 +154,7 @@ export default function ExpressionArtwork({
               fill="#60381e"
               d="M410 190 C411 175 435 180 448 192 C463 209 439 201 428 199 C417 198 409 195 410 190 Z"
             />
-            <path
+            <g className="expression-blink"><path
               id={`${uid}-neutral-left-eye`}
               data-part="left-eye"
               fill="#fffaf0"
@@ -160,13 +165,7 @@ export default function ExpressionArtwork({
               <use href={`#${uid}-neutral-left-eye`} />
             </clipPath>
             <g clipPath={`url(#${uid}-neutral-left-eye-clip)`}>
-              <path
-                id={`${uid}-neutral-left-pupil`}
-                data-part="left-pupil"
-                stroke="none"
-                fill="#633d26"
-                d="M219 331 C207 317 210 297 221 291 C237 283 251 295 255 307 L254 331 Z"
-              />
+              <g id={`${uid}-neutral-left-pupil`} data-part="left-pupil" stroke="none"><ellipse cx="233" cy="313" rx="19" ry="25" fill="#815334"/><ellipse cx="233" cy="314" rx="13" ry="19" fill="#38251d"/><ellipse cx="228" cy="303" rx="5.5" ry="6.5" fill="#fffdf5"/><circle cx="240" cy="321" r="2.5" fill="#f3d5ac" opacity=".8"/></g>
             </g>
             <path
               id={`${uid}-neutral-right-eye`}
@@ -179,17 +178,8 @@ export default function ExpressionArtwork({
               <use href={`#${uid}-neutral-right-eye`} />
             </clipPath>
             <g clipPath={`url(#${uid}-neutral-right-eye-clip)`}>
-              <path
-                id={`${uid}-neutral-right-pupil`}
-                data-part="right-pupil"
-                stroke="none"
-                fill="#633d26"
-                d="M409 304 C402 287 408 262 422 258 C440 251 451 266 450 293 Z"
-              />
+              <g id={`${uid}-neutral-right-pupil`} data-part="right-pupil" stroke="none"><ellipse cx="432" cy="283" rx="19" ry="25" fill="#815334"/><ellipse cx="432" cy="284" rx="13" ry="19" fill="#38251d"/><ellipse cx="427" cy="273" rx="5.5" ry="6.5" fill="#fffdf5"/><circle cx="439" cy="291" r="2.5" fill="#f3d5ac" opacity=".8"/></g>
             </g>
-            <g className="eye-highlights" fill="#fffdf5" stroke="none">
-              <ellipse cx="240" cy="299" rx="6" ry="6" />
-              <ellipse cx="436" cy="268" rx="6" ry="6" />
             </g>
             <g fill="#cf9477" stroke="none">
               <ellipse
@@ -208,13 +198,11 @@ export default function ExpressionArtwork({
               />
             </g>
 
-            <path
-              id={`${uid}-neutral-neutral-mouth`}
-              data-part="neutral-mouth"
-              fill="none"
-              strokeWidth="7"
-              d="M323 390 Q349 402 373 386 M349 351 L349 375"
-            />
+            <motion.path data-part="reaction-mouth" fill="#64371f" strokeWidth="6" initial={false}
+              animate={{d: delighted ? "M309 384 C331 399 369 395 393 376 C395 412 379 442 353 443 C327 444 312 419 309 384 Z" : "M323 390 C339 398 356 396 373 386 C367 394 359 399 349 399 C338 399 328 395 323 390 Z"}}
+              transition={expressionTransition}/>
+            <motion.path data-part="reaction-tongue" fill="#df927a" stroke="none" d="M329 425 Q353 409 376 426 Q354 450 329 425 Z" initial={false} animate={{opacity:delighted?1:0}} transition={expressionTransition}/>
+            <path data-part="neutral-mouth" fill="none" strokeWidth="7" d="M349 351 L349 375"/>
             <BearPart zone="nose">
               <path
                 id={`${uid}-neutral-nose`}
@@ -459,7 +447,7 @@ export default function ExpressionArtwork({
               fill="#60381e"
               d="M407 187 C411 165 439 167 454 180 C436 176 419 180 414 190 Z"
             />
-            <path
+            <g className="expression-blink"><path
               id={`${uid}-excited-left-eye`}
               data-part="left-eye"
               fill="#fffaf0"
@@ -470,13 +458,7 @@ export default function ExpressionArtwork({
               <use href={`#${uid}-excited-left-eye`} />
             </clipPath>
             <g clipPath={`url(#${uid}-excited-left-eye-clip)`}>
-              <path
-                id={`${uid}-excited-left-pupil`}
-                data-part="left-pupil"
-                stroke="none"
-                fill="#633d26"
-                d="M219 331 C207 317 210 297 221 291 C237 283 251 295 255 307 L254 331 Z"
-              />
+              <g id={`${uid}-excited-left-pupil`} data-part="left-pupil" stroke="none"><ellipse cx="233" cy="313" rx="19" ry="25" fill="#815334"/><ellipse cx="233" cy="314" rx="13" ry="19" fill="#38251d"/><ellipse cx="228" cy="303" rx="5.5" ry="6.5" fill="#fffdf5"/><circle cx="240" cy="321" r="2.5" fill="#f3d5ac" opacity=".8"/></g>
             </g>
             <path
               id={`${uid}-excited-right-eye`}
@@ -489,17 +471,8 @@ export default function ExpressionArtwork({
               <use href={`#${uid}-excited-right-eye`} />
             </clipPath>
             <g clipPath={`url(#${uid}-excited-right-eye-clip)`}>
-              <path
-                id={`${uid}-excited-right-pupil`}
-                data-part="right-pupil"
-                stroke="none"
-                fill="#633d26"
-                d="M409 304 C402 287 408 262 422 258 C440 251 451 266 450 293 Z"
-              />
+              <g id={`${uid}-excited-right-pupil`} data-part="right-pupil" stroke="none"><ellipse cx="432" cy="283" rx="19" ry="25" fill="#815334"/><ellipse cx="432" cy="284" rx="13" ry="19" fill="#38251d"/><ellipse cx="427" cy="273" rx="5.5" ry="6.5" fill="#fffdf5"/><circle cx="439" cy="291" r="2.5" fill="#f3d5ac" opacity=".8"/></g>
             </g>
-            <g className="eye-highlights" fill="#fffdf5" stroke="none">
-              <ellipse cx="240" cy="299" rx="6" ry="6" />
-              <ellipse cx="436" cy="268" rx="6" ry="6" />
             </g>
             <g fill="#d98265" stroke="none">
               <ellipse
@@ -681,7 +654,7 @@ export default function ExpressionArtwork({
               id={`${uid}-confused-body`}
               data-part="body"
               fill={`url(#${uid}-confused-fur)`}
-              d="M162 497 C105 530 65 591 67 645 C64 695 92 716 144 711 L566 667 C581 613 551 535 511 455 Z"
+              d="M162 497 C105 530 65 591 67 645 C64 695 92 716 144 711 C282 723 452 716 540 682 C570 653 553 542 511 455 Z"
             />
 
             <BearPart zone="belly">
@@ -780,7 +753,7 @@ export default function ExpressionArtwork({
               fill="#60381e"
               d="M408 211 Q433 202 461 218 L458 228 Q434 217 410 221 Z"
             />
-            <path
+            <g className="expression-blink"><path
               id={`${uid}-confused-left-eye`}
               data-part="left-eye"
               fill="#fffaf0"
@@ -791,13 +764,7 @@ export default function ExpressionArtwork({
               <use href={`#${uid}-confused-left-eye`} />
             </clipPath>
             <g clipPath={`url(#${uid}-confused-left-eye-clip)`}>
-              <path
-                id={`${uid}-confused-left-pupil`}
-                data-part="left-pupil"
-                stroke="none"
-                fill="#633d26"
-                d="M219 331 C207 317 210 297 221 291 C237 283 251 295 255 307 L254 331 Z"
-              />
+              <g id={`${uid}-confused-left-pupil`} data-part="left-pupil" stroke="none"><ellipse cx="233" cy="313" rx="19" ry="25" fill="#815334"/><ellipse cx="233" cy="314" rx="13" ry="19" fill="#38251d"/><ellipse cx="228" cy="303" rx="5.5" ry="6.5" fill="#fffdf5"/><circle cx="240" cy="321" r="2.5" fill="#f3d5ac" opacity=".8"/></g>
             </g>
             <path
               id={`${uid}-confused-right-eye`}
@@ -810,17 +777,8 @@ export default function ExpressionArtwork({
               <use href={`#${uid}-confused-right-eye`} />
             </clipPath>
             <g clipPath={`url(#${uid}-confused-right-eye-clip)`}>
-              <path
-                id={`${uid}-confused-right-pupil`}
-                data-part="right-pupil"
-                stroke="none"
-                fill="#633d26"
-                d="M409 304 C402 287 408 262 422 258 C440 251 451 266 450 293 Z"
-              />
+              <g id={`${uid}-confused-right-pupil`} data-part="right-pupil" stroke="none"><ellipse cx="432" cy="283" rx="19" ry="25" fill="#815334"/><ellipse cx="432" cy="284" rx="13" ry="19" fill="#38251d"/><ellipse cx="427" cy="273" rx="5.5" ry="6.5" fill="#fffdf5"/><circle cx="439" cy="291" r="2.5" fill="#f3d5ac" opacity=".8"/></g>
             </g>
-            <g className="eye-highlights" fill="#fffdf5" stroke="none">
-              <ellipse cx="240" cy="299" rx="6" ry="6" />
-              <ellipse cx="436" cy="268" rx="6" ry="6" />
             </g>
             <g fill="#d98265" stroke="none">
               <ellipse
@@ -1307,7 +1265,7 @@ export default function ExpressionArtwork({
               id={`${uid}-facepalm-body`}
               data-part="body"
               fill={`url(#${uid}-facepalm-fur)`}
-              d="M162 497 C105 530 65 591 67 645 C64 695 92 716 144 711 L566 667 C581 613 551 535 511 455 Z"
+              d="M162 497 C105 530 65 591 67 645 C64 695 92 716 144 711 C282 723 452 716 540 682 C570 653 553 542 511 455 Z"
             />
 
             <BearPart zone="belly">
@@ -1520,17 +1478,17 @@ export default function ExpressionArtwork({
               data-part="facepalm-paw"
               fill={`url(#${uid}-facepalm-fur)`}
             >
-              <path d="M518 639 C554 633 573 606 558 575 C538 534 517 481 492 428 L437 305 C438 279 426 259 405 250 C388 233 363 234 345 247 C321 248 306 266 309 287 C302 308 317 330 339 335 C359 353 387 354 408 339 C426 374 435 410 445 450 L477 595 C474 621 493 644 518 639 Z" />
+              <path d="M518 632 C558 631 577 603 562 568 C535 512 509 450 485 392 C470 353 450 319 436 300 C438 273 421 250 397 246 C375 232 350 241 340 249 C318 251 304 270 308 290 C304 313 323 334 346 338 C366 350 390 349 408 338 C431 390 435 445 443 494 C449 537 461 578 476 609 C484 626 499 634 518 632 Z" />
               <path
                 fill="#805033"
                 stroke="none"
-                d="M430 307 C426 325 409 337 391 340 C398 345 405 343 408 339 C436 391 452 481 477 595 C480 619 498 638 518 639 C546 634 565 611 560 589 C549 615 521 625 504 605 C486 579 463 438 450 398 Z"
+                d="M430 310 C428 327 415 338 403 341 C431 392 435 445 443 494 C449 537 461 578 476 609 C484 627 503 635 518 632 C548 632 565 614 565 594 C547 618 518 617 504 593 C479 545 477 463 459 404 Z"
               />
               <path
                 fill="none"
                 stroke="#c39570"
                 strokeWidth="7"
-                d="M331 269 Q352 249 375 255 M504 580 Q475 506 466 456"
+                d="M331 269 Q352 249 375 255 M505 557 Q487 524 482 495"
               />
               <path
                 fill="none"
@@ -1591,7 +1549,7 @@ export default function ExpressionArtwork({
               id={`${uid}-proud-body`}
               data-part="body"
               fill={`url(#${uid}-proud-fur)`}
-              d="M162 497 C105 530 65 591 67 645 C64 695 92 716 144 711 L566 667 C581 613 551 535 511 455 Z"
+              d="M162 497 C105 530 65 591 67 645 C64 695 92 716 144 711 C282 723 452 716 540 682 C570 653 553 542 511 455 Z"
             />
 
             <BearPart zone="belly">
@@ -1690,7 +1648,7 @@ export default function ExpressionArtwork({
               fill="#60381e"
               d="M410 192 Q431 177 450 188 L448 197 Q431 190 413 202 Z"
             />
-            <path
+            <g className="expression-blink"><path
               id={`${uid}-proud-left-eye`}
               data-part="left-eye"
               fill="#fffaf0"
@@ -1701,13 +1659,7 @@ export default function ExpressionArtwork({
               <use href={`#${uid}-proud-left-eye`} />
             </clipPath>
             <g clipPath={`url(#${uid}-proud-left-eye-clip)`}>
-              <path
-                id={`${uid}-proud-left-pupil`}
-                data-part="left-pupil"
-                stroke="none"
-                fill="#633d26"
-                d="M219 331 C207 317 210 297 221 291 C237 283 251 295 255 307 L254 331 Z"
-              />
+              <g id={`${uid}-proud-left-pupil`} data-part="left-pupil" stroke="none"><ellipse cx="233" cy="313" rx="19" ry="25" fill="#815334"/><ellipse cx="233" cy="314" rx="13" ry="19" fill="#38251d"/><ellipse cx="228" cy="303" rx="5.5" ry="6.5" fill="#fffdf5"/><circle cx="240" cy="321" r="2.5" fill="#f3d5ac" opacity=".8"/></g>
             </g>
             <path
               id={`${uid}-proud-right-eye`}
@@ -1720,17 +1672,8 @@ export default function ExpressionArtwork({
               <use href={`#${uid}-proud-right-eye`} />
             </clipPath>
             <g clipPath={`url(#${uid}-proud-right-eye-clip)`}>
-              <path
-                id={`${uid}-proud-right-pupil`}
-                data-part="right-pupil"
-                stroke="none"
-                fill="#633d26"
-                d="M409 304 C402 287 408 262 422 258 C440 251 451 266 450 293 Z"
-              />
+              <g id={`${uid}-proud-right-pupil`} data-part="right-pupil" stroke="none"><ellipse cx="432" cy="283" rx="19" ry="25" fill="#815334"/><ellipse cx="432" cy="284" rx="13" ry="19" fill="#38251d"/><ellipse cx="427" cy="273" rx="5.5" ry="6.5" fill="#fffdf5"/><circle cx="439" cy="291" r="2.5" fill="#f3d5ac" opacity=".8"/></g>
             </g>
-            <g className="eye-highlights" fill="#fffdf5" stroke="none">
-              <ellipse cx="240" cy="299" rx="6" ry="6" />
-              <ellipse cx="436" cy="268" rx="6" ry="6" />
             </g>
             <g fill="#d98265" stroke="none">
               <ellipse

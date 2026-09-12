@@ -7,7 +7,7 @@
  <linearGradient id="blue" x2="0.4" y2="1"><stop stop-color="#588dbe"/><stop offset="1" stop-color="#386eaa"/></linearGradient>
 </defs>
 <g stroke="#59351f" stroke-width="10" stroke-linejoin="round" stroke-linecap="round">
- <path id="body" fill="url(#fur)" d="M162 497 C105 530 65 591 67 645 C64 695 92 716 144 711 L566 667 C581 613 551 535 511 455 Z"/>
+ <path id="body" fill="url(#fur)" d="M162 497 C105 530 65 591 67 645 C64 695 92 716 144 711 C282 723 452 716 540 682 C570 653 553 542 511 455 Z"/>
  
  <path id="belly" stroke="none" fill="url(#tan)" d="M243 667 C246 614 280 562 319 548 C354 526 405 537 442 564 C479 592 505 630 518 667 Z"/>
  <path id="neck-shadow" stroke="none" fill="#835438" d="M154 498 C245 540 391 540 487 473 C461 518 419 551 365 558 C290 565 201 548 154 519 Z"/>
@@ -23,10 +23,10 @@
  <path id="left-brow" stroke="none" fill="#60381e" d="M184 235 C190 220 207 211 216 214 C228 221 210 229 201 233 C190 244 178 251 184 235 Z"/>
  <path id="right-brow" stroke="none" fill="#60381e" d="M410 190 C411 175 435 180 448 192 C463 209 439 201 428 199 C417 198 409 195 410 190 Z"/>
  <path id="left-eye" fill="#fffaf0" stroke-width="6" d="M201 336 C187 315 194 287 210 278 C232 266 252 282 256 303 L254 331 C235 326 215 333 201 336 Z"/>
- <path id="left-pupil" stroke="none" fill="#633d26" d="M219 331 C207 317 210 297 221 291 C237 283 251 295 255 307 L254 331 Z"/>
+ <clipPath id="left-pupil-boundary"><use href="#left-eye"/></clipPath><g clip-path="url(#left-pupil-boundary)"><g id="left-pupil"  stroke="none"><ellipse cx="233" cy="313" rx="19" ry="25" fill="#815334"/><ellipse cx="233" cy="314" rx="13" ry="19" fill="#38251d"/><ellipse cx="228" cy="303" rx="5.5" ry="6.5" fill="#fffdf5"/><circle cx="240" cy="321" r="2.5" fill="#f3d5ac" opacity=".8"/></g></g>
  <path id="right-eye" fill="#fffaf0" stroke-width="6" d="M408 306 C395 284 404 252 421 242 C442 232 462 247 466 267 L463 294 C443 291 423 299 408 306 Z"/>
- <path id="right-pupil" stroke="none" fill="#633d26" d="M409 304 C402 287 408 262 422 258 C440 251 451 266 450 293 Z"/>
- <g fill="#fffdf5" stroke="none"><ellipse cx="240" cy="299" rx="6" ry="6"/><ellipse cx="436" cy="268" rx="6" ry="6"/></g>
+ <clipPath id="right-pupil-boundary"><use href="#right-eye"/></clipPath><g clip-path="url(#right-pupil-boundary)"><g id="right-pupil"  stroke="none"><ellipse cx="432" cy="283" rx="19" ry="25" fill="#815334"/><ellipse cx="432" cy="284" rx="13" ry="19" fill="#38251d"/><ellipse cx="427" cy="273" rx="5.5" ry="6.5" fill="#fffdf5"/><circle cx="439" cy="291" r="2.5" fill="#f3d5ac" opacity=".8"/></g></g>
+ 
  <g fill="#cf9477" stroke="none"><ellipse cx="187" cy="373" rx="34" ry="21" transform="rotate(-11 187 373)"/><ellipse cx="493" cy="321" rx="33" ry="21" transform="rotate(-10 493 321)"/></g>
  
  

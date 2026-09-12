@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="750" height="750" viewBox="0 0 750 750">
-<title>Picko — proud</title>
+<title>Picko — sleepy</title>
 <desc>Editable vector artwork. All shapes are SVG paths and ellipses; no embedded images.</desc>
 <defs>
  <linearGradient id="fur" x2="0.8" y2="1"><stop stop-color="#a77a52"/><stop offset="1" stop-color="#956540"/></linearGradient>
@@ -20,18 +20,18 @@
  <path id="face-shadow" fill="#875839" stroke="none" d="M94 411 C111 456 153 483 213 492 C360 515 499 475 559 376 C551 426 515 466 472 491 C391 541 231 543 151 500 C130 486 121 474 115 452 C107 464 96 449 94 411 Z"/>
  <path id="head-highlight" fill="none" stroke="#c2946b" stroke-width="8" d="M165 170 C194 148 224 132 252 122 C269 101 287 81 303 77 M357 117 C383 119 404 125 426 131"/>
  <path id="muzzle" stroke="none" fill="url(#tan)" d="M255 367 C264 337 276 316 284 290 C292 265 309 252 335 257 C365 258 382 281 398 305 C416 324 435 341 441 369 C454 412 430 453 399 463 C366 474 312 470 286 454 C258 436 247 402 255 367 Z"/>
- <path id="left-brow" stroke="none" fill="#60381e" d="M181 238 Q199 225 219 231 L218 240 Q199 234 183 248 Z"/>
- <path id="right-brow" stroke="none" fill="#60381e" d="M410 192 Q431 177 450 188 L448 197 Q431 190 413 202 Z"/>
- <path id="left-eye" fill="#fffaf0" stroke-width="6" d="M201 336 C187 315 194 287 210 278 C232 266 252 282 256 303 L254 331 C235 326 215 333 201 336 Z"/>
- <clipPath id="left-pupil-boundary"><use href="#left-eye"/></clipPath><g clip-path="url(#left-pupil-boundary)"><g id="left-pupil"  stroke="none"><ellipse cx="233" cy="313" rx="19" ry="25" fill="#815334"/><ellipse cx="233" cy="314" rx="13" ry="19" fill="#38251d"/><ellipse cx="228" cy="303" rx="5.5" ry="6.5" fill="#fffdf5"/><circle cx="240" cy="321" r="2.5" fill="#f3d5ac" opacity=".8"/></g></g>
- <path id="right-eye" fill="#fffaf0" stroke-width="6" d="M408 306 C395 284 404 252 421 242 C442 232 462 247 466 267 L463 294 C443 291 423 299 408 306 Z"/>
- <clipPath id="right-pupil-boundary"><use href="#right-eye"/></clipPath><g clip-path="url(#right-pupil-boundary)"><g id="right-pupil"  stroke="none"><ellipse cx="432" cy="283" rx="19" ry="25" fill="#815334"/><ellipse cx="432" cy="284" rx="13" ry="19" fill="#38251d"/><ellipse cx="427" cy="273" rx="5.5" ry="6.5" fill="#fffdf5"/><circle cx="439" cy="291" r="2.5" fill="#f3d5ac" opacity=".8"/></g></g>
+ <path id="left-brow" stroke="none" fill="#60381e" d="M184 235 C190 220 207 211 216 214 C228 221 210 229 201 233 C190 244 178 251 184 235 Z"/>
+ <path id="right-brow" stroke="none" fill="#60381e" d="M410 190 C411 175 435 180 448 192 C463 209 439 201 428 199 C417 198 409 195 410 190 Z"/>
+ <path id="left-eye" fill="none" stroke-width="7" d="M197 309 Q225 333 252 298"/>
  
- <g fill="#d98265" stroke="none"><ellipse cx="187" cy="373" rx="34" ry="21" transform="rotate(-11 187 373)"/><ellipse cx="493" cy="321" rx="33" ry="21" transform="rotate(-10 493 321)"/></g>
+ <path id="right-eye" fill="none" stroke-width="7" d="M407 279 Q433 302 461 267"/>
  
  
+ <g fill="#cf9477" stroke="none"><ellipse cx="187" cy="373" rx="34" ry="21" transform="rotate(-11 187 373)"/><ellipse cx="493" cy="321" rx="33" ry="21" transform="rotate(-10 493 321)"/></g>
  
- <path id="proud-smile" fill="none" stroke-width="9" d="M310 389 Q352 427 397 369 M348 352 L348 378"/><path id="nose" stroke-width="5" fill="#64371f" d="M301 324 C300 306 339 297 367 302 C393 305 381 328 368 343 C348 365 309 348 301 324 Z"/>
+ 
+ 
+ <ellipse id="sleepy-yawn" cx="350" cy="411" rx="18" ry="24" fill="#64371f" stroke-width="6"/><path id="nose" stroke-width="5" fill="#64371f" d="M301 324 C300 306 339 297 367 302 C393 305 381 328 368 343 C348 365 309 348 301 324 Z"/>
  <path id="nose-shine" stroke="none" fill="#ba8b61" d="M319 314 C331 307 353 305 366 308 C355 317 333 322 319 314 Z"/>
  
  
@@ -45,5 +45,5 @@
  <path id="paw-shadow" stroke="none" fill="#805134" d="M78 659 C89 683 115 688 144 686 C179 685 209 700 237 708 C266 718 300 709 317 688 C312 708 297 721 280 722 C251 735 223 714 197 714 C149 717 114 719 90 702 C79 692 74 675 78 659 Z"/>
  <path id="paw-details" fill="none" stroke-width="7" d="M198 593 L205 575 M265 689 C276 696 278 706 275 719 M296 672 C306 680 309 689 309 700"/>
  <path id="paw-shine" fill="none" stroke="#c69872" stroke-width="7" d="M165 603 C209 600 286 625 306 654"/>
-<g id="proud-paw" fill="url(#fur)"><path d="M535 630 C568 614 579 575 552 551 C522 523 485 504 451 478 C431 461 407 465 397 484 C386 504 398 526 420 536 C445 550 473 558 483 581 C470 610 502 645 535 630 Z"/><path fill="#805033" stroke="none" d="M547 571 C557 599 535 618 516 618 C502 619 492 611 486 597 C483 620 508 641 535 630 C562 618 578 590 559 563 Z"/><path fill="none" stroke="#c39570" stroke-width="7" d="M418 483 C435 482 451 494 467 505"/><path fill="none" stroke-width="5" d="M410 509 Q416 502 423 503 M425 520 Q431 513 438 515"/></g><g id="proud-sparkle" fill="#eac08c" stroke="#a77845" stroke-width="4"><path d="M645 233 L654 260 L681 269 L654 278 L645 305 L636 278 L609 269 L636 260 Z"/></g></g>
-</svg>
+<g id="resting-right-paw" fill="url(#fur)"><path d="M513 579 C549 578 572 598 574 629 C585 659 565 683 532 686 C502 694 478 680 478 660 C469 637 485 604 513 579 Z"/><path fill="none" stroke-width="5" d="M495 659 Q504 653 511 658 M512 672 Q522 664 530 669"/><path fill="none" stroke="#c39570" stroke-width="7" d="M521 593 Q548 593 555 615"/></g></g>
+<g id="sleepy-dream" fill="none" stroke="#507fa6" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><path d="M602 194 L625 194 L602 222 L625 222 M639 132 L669 132 L639 170 L669 170 M676 61 L717 61 L676 110 L717 110"/></g></svg>

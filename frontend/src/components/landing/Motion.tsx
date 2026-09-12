@@ -9,12 +9,17 @@ import {
 } from "framer-motion";
 import { useRef } from "react";
 const reveal = {
-  visible: {
-    y: [24, 0],
-    opacity: [0.4, 1],
-    transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] as const },
-  },
+  hidden: { opacity: 0, y: 18 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] as const } },
 };
+const cardReveal = {
+  hidden: { opacity: 0, y: 20 },
+  visible: (index:number) => ({opacity:1,y:0,transition:{duration:0.55,delay:index*0.07,ease:[0.22,1,0.36,1] as const}}),
+};
+export function RevealCard({index,children,...props}:HTMLMotionProps<"article"> & {index:number}){
+  const reduce=useReducedMotion();
+  return <motion.article {...props} custom={index} initial={reduce?false:"hidden"} whileInView="visible" viewport={{once:true,amount:0.18}} variants={cardReveal}>{children}</motion.article>;
+}
 /** Stable variants prevent hover state from replaying section entrance animations. */
 export function RevealSection({
   children,
@@ -24,8 +29,8 @@ export function RevealSection({
   return (
     <motion.section
       {...props}
-      initial={false}
-      whileInView={reduce ? undefined : "visible"}
+      initial={reduce || props.className?.includes("hero") ? false : "hidden"}
+      whileInView="visible"
       variants={reveal}
       viewport={{ once: true, amount: 0.12 }}
     >
